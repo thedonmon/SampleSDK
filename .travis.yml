@@ -10,3 +10,13 @@ install:
 script:
  - dotnet build ./SampleSDK.sln
  - dotnet test ./SampleSDK.Tests.csproj --framework netcoreapp3.1
+
+before_deploy:
+- dotnet pack -c Release
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: dotnet nuget push ./SampleSDK/bin/Release/SampleSDK.*.nupkg  -k $NUGET_API -s https://api.nuget.org/v3/index.json --skip-duplicate
+  on:
+    branch: master
