@@ -1,6 +1,6 @@
 language: csharp
 sudo: required
-mono: latest 
+mono: none 
 solution: ./SampleSDK.sln
 dotnet: 3.1
 
@@ -9,7 +9,7 @@ install:
 
 script:
  - dotnet build ./SampleSDK.sln
- - dotnet test ./SampleSDK/SampleSDK.Tests.csproj --framework netcoreapp3.1
+ - dotnet test ./SampleSDK/SampleSDK.Tests/SampleSDK.Tests.csproj --framework netcoreapp3.1
 
 before_deploy:
 - dotnet pack -c Release
