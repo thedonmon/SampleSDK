@@ -1,0 +1,12 @@
+language: csharp
+sudo: required
+mono: latest 
+solution: ./SampleSDK.sln
+dotnet: 3.1
+
+install:
+- dotnet restore ./SampleSDK.sln
+
+script:
+ - dotnet build ./SampleSDK.sln
+ - dotnet test ./SampleSDK.Tests.csproj --framework netcoreapp3.1
